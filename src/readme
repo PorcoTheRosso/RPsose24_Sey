@@ -1,0 +1,81 @@
+### Projektübersicht: Solar Pomodori
+
+Dieses Projekt beschreibt einen Pomodoro-Timer, der mit einem ATtiny85 Mikrocontroller umgesetzt wurde. Der Timer unterstützt die Pomodoro-Technik und umfasst die folgenden Funktionen:
+
+- **Arbeitszeit**: 25 Minuten
+- **Pausenzeit**: 5 Minuten
+- **Signalisierung**: Ton, Licht und Vibration zur Anzeige des Wechselmodus
+- **LED-Anzeige**: Unterschiedliche Farben für Arbeitszeit, Pause und Signalisierung
+- **Vibrationsmotor**: Zeigt die Hälfte der Arbeitszeit durch intermittierendes Vibrieren an
+
+### Hardware-Anforderungen
+
+- **ATtiny85** Mikrocontroller
+- **RGB-LED** (Rot, Grün, Blau)
+- **Buzzer**
+- **Vibrationsmotor**
+- **Solarzelle** zur Spannungsversorgung
+- **Widerstände** (100 Ohm für Buzzer und Vibrationsmotor, 1K+4.7K Ohm für die Messung der Spannung & 200/240 Ohm für RGB LED)
+- **Verbindungskabel und -stecker**
+
+### Pinbelegung Attiny85
+
+- **Pin 1**: Rotanteil der RGB-LED
+- **Pin 2**: Blauanteil der RGB-LED
+- **Pin 3**: Grünanteil der RGB-LED
+- **Pin 4**: GND
+- **Pin 5**: Buzzer
+- **Pin 6**: Vibrationsmotor
+- **Pin 7**: Solarzelle (Analog-In)
+- **Pin 8**: VCC
+
+
+### Funktionen des Pomodoro Timers
+
+1. **Arbeitszeit (25 Minuten)**:
+   - Die RGB-LED leuchtet rot.
+   - Wenn die Hälfte der Arbeitszeit erreicht ist, beginnt der Vibrationsmotor zu vibrieren und die blaue LED blinkt im 0,5-Sekunden-Takt für 6 Sekunden.
+
+2. **Pause (5 Minuten)**:
+   - Die RGB-LED leuchtet grün.
+
+3. **Signalisierung des Wechsels**:
+   - Beim Wechsel zwischen Arbeits- und Pausenmodus leuchtet die RGB-LED gelb und der Buzzer ertönt für 3 Sekunden.
+
+4. **Vibrationsmotor**:
+   - Der Vibrationsmotor wird nur während der Arbeitszeit aktiviert, um die Halbzeit anzuzeigen. Während der Vibration blinkt die LED blau im Intervall von 0,5 Sekunden.
+
+5. **Solarzelle**:
+   - Der Timer wird nur betrieben, wenn die Solarzelle genügend Spannung liefert.
+
+### Bedienungsanleitung
+
+1. **Aufbau**:
+   - **Verbinden Sie die RGB-LED**: Schließen Sie die Pins der RGB-LED gemäß den Pinbelegungen (Pin 1 für Rot, Pin 2 für Blau, Pin 3 für Grün) an den ATtiny85 an.
+   - **Verbinden Sie den Buzzer**: Schließen Sie den Buzzer an Pin 5 des ATtiny85 an, mit einem 100-Ohm-Widerstand in Reihe.
+   - **Verbinden Sie den Vibrationsmotor**: Schließen Sie den Vibrationsmotor an Pin 6 des ATtiny85 an, ebenfalls mit einem 100-Ohm-Widerstand.
+   - **Verbinden Sie die Solarzelle**: Schließen Sie die Solarzelle an Pin 7 des ATtiny85 an, um die Spannung zu überwachen.
+   - **Verbinden Sie GND**: Schließen Sie Pin 4 des ATtiny85 als GND für die RGB-LED und andere Komponenten an.
+
+2. **Inbetriebnahme**:
+   - **Stellen Sie sicher, dass die Solarzelle genügend Licht erhält**: Die Solarzelle muss ausreichend Licht erhalten, um den Timer zu betreiben.
+   - **Überprüfen Sie die LEDs**: Die RGB-LED sollte entsprechend den beschriebenen Farben leuchten, je nach Modus des Timers.
+   - **Überprüfen Sie den Buzzer und den Vibrationsmotor**: Der Buzzer sollte für 3 Sekunden ertönen, und der Vibrationsmotor sollte wie beschrieben vibrieren.
+
+3. **Moduswechsel**:
+   - Der Timer wechselt automatisch zwischen Arbeits- und Pausenmodus gemäß den voreingestellten Zeiten (25 Minuten Arbeitszeit, 5 Minuten Pause).
+   - Die RGB-LED signalisiert den aktuellen Modus und den Wechsel zwischen den Modi.
+
+### Fehlersuche
+
+- **Keine Anzeige oder kein Betrieb**:
+  - Überprüfen Sie, ob die Solarzelle genügend Spannung liefert.
+  - Stellen Sie sicher, dass alle Verbindungen korrekt sind und der ATtiny85 ordnungsgemäß mit Strom versorgt wird.
+
+- **LED leuchtet nicht in der richtigen Farbe**:
+  - Überprüfen Sie die Verkabelung der RGB-LED und stellen Sie sicher, dass die Pins korrekt angeschlossen sind.
+
+- **Buzzer oder Vibrationsmotor funktionieren nicht**:
+  - Überprüfen Sie die Widerstandswerte und die Verkabelung.
+
+Bei weiteren Fragen oder Problemen schreibt mir einfach auf Mattermorst!
