@@ -1,5 +1,7 @@
 // Definiere die Pin-Nummern 
 #include <Arduino.h>
+
+// Pin-Definitionen
 const int ledRPin = 1;    // Rotanteil der RGB-LED
 const int ledBPin = 2;    // Blauanteil der RGB-LED
 const int ledGPin = 3;    // Grünanteil der RGB-LED
@@ -8,11 +10,11 @@ const int vibMotorPin = 6; // Vibrationsmotor
 const int solarPin = 7;   // Solarzelle zur Spannungsüberwachung
 
 // Timer-Konfiguration
-const unsigned long workTime = 25 * 60 * 1000;  // Arbeitszeit in Millisekunden (25 Minuten)
-const unsigned long breakTime = 5 * 60 * 1000;  // Pausenzeit in Millisekunden (5 Minuten)
-const unsigned long signalDuration = 3000; // Dauer des Signalisierens (3 Sekunden)
-const unsigned long vibInterval = 6000; // Vibration Intervall (6 Sekunden)
-const unsigned long blinkInterval = 500; // Blink Intervall für die LED (0.5 Sekunden)
+const unsigned long workTime = 25UL * 60 * 1000;  // Arbeitszeit in Millisekunden (25 Minuten)
+const unsigned long breakTime = 5UL * 60 * 1000;  // Pausenzeit in Millisekunden (5 Minuten)
+const unsigned long signalDuration = 3000UL; // Dauer des Signalisierens (3 Sekunden)
+const unsigned long vibInterval = 6000UL; // Vibration Intervall (6 Sekunden)
+const unsigned long blinkInterval = 500UL; // Blink Intervall für die LED (0.5 Sekunden)
 unsigned long previousMillis = 0;
 unsigned long signalStartMillis = 0;
 bool isWorking = true;
@@ -21,6 +23,9 @@ bool vibrate = false;
 unsigned long phaseStartMillis = 0;
 unsigned long blinkMillis = 0;
 bool ledState = false;
+
+// Funktion zur Steuerung der LED-Farbe
+void setLedColor(String color); // Vorwärtsdeklaration
 
 // Initialisierung
 void setup() {
